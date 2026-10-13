@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     images: [{ url: office.entrance, width: 1448, height: 1086 }],
   },
   twitter: { card: "summary_large_image" },
+  verification: { google: "v8aM8ImsnBXV7gVuNzxnpzBnA08lokWzdp-HIMenq9M" },
 };
 
 const jsonLd = {
