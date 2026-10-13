@@ -78,7 +78,7 @@ export default function Header() {
       </div>
       {open && (
         <nav className="border-t border-navy-100 bg-white lg:hidden" aria-label="Mobil menü">
-          <ul className="mx-auto max-w-site px-5 py-3">
+          <ul className="mx-auto max-w-site px-5 pb-3 pt-8">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
