@@ -37,6 +37,7 @@ export const unsplash = (id: string, w = 1600, h?: number) =>
 /** Büronun kendi görselleri (public/img) */
 export const office = {
   logo: "/img/logo.png",
+  logoLight: "/img/logo-light.png",
   mark: "/img/mark-180.png",
   entrance: "/img/ofis-giris.jpg",
   door: "/img/ofis-kapi.jpg",
