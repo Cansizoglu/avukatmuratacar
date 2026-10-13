@@ -46,7 +46,7 @@ export default function Header() {
       </div>
       <div className="mx-auto flex max-w-site items-center justify-between px-5 py-3">
         <Logo />
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Ana menü">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Ana menü">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -60,7 +60,7 @@ export default function Header() {
           ))}
           <a
             href={site.phoneHref}
-            className="flex items-center gap-2 rounded-sm bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-800"
+            className="hidden items-center gap-2 rounded-sm bg-navy-900 px-5 py-2.5 text-sm font-semibold xl:flex text-white transition hover:bg-navy-800"
           >
             <Icon name="phone" className="h-4 w-4 text-gold-400" />
             {site.phone}
