@@ -31,6 +31,23 @@ export default function ContactPage() {
               <span className="block font-serif text-2xl">{site.phone}</span>
             </span>
           </a>
+          {site.lawyers
+            .filter((l) => l.phone)
+            .map((l) => (
+              <a
+                key={l.name}
+                href={l.phoneHref}
+                className="flex gap-4 rounded-sm border border-navy-100 bg-white p-6 transition hover:border-gold-300"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-gold-400 text-navy-950">
+                  <Icon name="phone" />
+                </span>
+                <span>
+                  <span className="block text-sm text-ink/55">{l.name}</span>
+                  <span className="block font-serif text-2xl text-navy-900">{l.phone}</span>
+                </span>
+              </a>
+            ))}
           <a
             href={whatsappLink("Merhaba, randevu almak istiyorum.")}
             target="_blank"

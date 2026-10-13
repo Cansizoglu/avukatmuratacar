@@ -62,7 +62,7 @@ const jsonLd = {
   logo: `${site.url}${office.logo}`,
   employee: [
     { "@type": "Person", name: "Murat Acar", jobTitle: "Avukat" },
-    { "@type": "Person", name: "Ecem Görgün", jobTitle: "Avukat" },
+    { "@type": "Person", name: "Ecem Görgün", jobTitle: "Avukat", telephone: "+90 530 384 04 84" },
   ],
 };
 

@@ -64,11 +64,17 @@ export default function AboutPage() {
         <div className="mx-auto max-w-site px-5">
           <SectionTitle center eyebrow="Avukatlarımız" title="Ekibimiz" />
           <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
-            {site.lawyers.map((name) => (
-              <div key={name} className="rounded-sm border border-navy-100 p-8 text-center">
+            {site.lawyers.map((l) => (
+              <div key={l.name} className="rounded-sm border border-navy-100 p-8 text-center">
                 <LogoMark className="mx-auto h-14 w-14" />
-                <h3 className="mt-5 font-serif text-2xl font-semibold text-navy-900">{name}</h3>
+                <h3 className="mt-5 font-serif text-2xl font-semibold text-navy-900">{l.name}</h3>
                 <p className="mt-1 text-sm font-medium uppercase tracking-[0.2em] text-gold-600">Avukat · {site.bar}</p>
+                {l.phone && (
+                  <a href={l.phoneHref} className="mt-4 inline-flex items-center gap-2 font-semibold text-navy-900 hover:text-gold-600">
+                    <Icon name="phone" className="h-4 w-4 text-gold-500" />
+                    {l.phone}
+                  </a>
+                )}
               </div>
             ))}
           </div>

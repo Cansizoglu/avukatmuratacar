@@ -4,7 +4,10 @@ export const site = {
   title: "Acar Görgün Hukuk Bürosu | Çeşme / İzmir Avukat",
   description:
     "Acar Görgün Hukuk Bürosu; Av. Murat Acar ve Av. Ecem Görgün ile Çeşme / İzmir'de aile, iş, ceza, gayrimenkul, miras, icra ve ticaret hukuku alanlarında danışmanlık ve dava takibi hizmeti vermektedir.",
-  lawyers: ["Av. Murat Acar", "Av. Ecem Görgün"],
+  lawyers: [
+    { name: "Av. Murat Acar" },
+    { name: "Av. Ecem Görgün", phone: "0530 384 04 84", phoneHref: "tel:+905303840484" },
+  ] as { name: string; phone?: string; phoneHref?: string }[],
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://avukatmuratacar.com").replace(/\/$/, ""),
   phone: "0545 310 34 09",
   phoneHref: "tel:+905453103409",
