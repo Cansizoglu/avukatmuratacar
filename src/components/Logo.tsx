@@ -21,7 +21,7 @@ export default function Logo({ light = false }: { light?: boolean }) {
         <img
           src={office.logo}
           alt={site.name}
-          width={446}
+          width={490}
           height={300}
           className="h-16 w-auto sm:h-[4.5rem] xl:h-20"
         />
