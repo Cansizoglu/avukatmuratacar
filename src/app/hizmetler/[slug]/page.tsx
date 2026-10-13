@@ -18,8 +18,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const s = getService(params.slug);
   if (!s) return {};
   return {
-    title: `İzmir ${s.title} Avukatı`,
-    description: `${s.short} Avukat Murat Acar, İzmir.`,
+    title: `Çeşme ${s.title} Avukatı`,
+    description: `${s.short} Acar Görgün Hukuk Bürosu, Çeşme / İzmir.`,
     alternates: { canonical: `/hizmetler/${s.slug}` },
     openGraph: { images: [unsplash(s.image, 1200, 630)] },
   };

@@ -19,7 +19,7 @@ export default function KvkkPage() {
       <section className="prose-legal mx-auto max-w-3xl px-5 py-16">
         <p>
           Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu&apos;nun (&quot;KVKK&quot;) 10. maddesi
-          uyarınca, veri sorumlusu sıfatıyla Av. Murat Acar (&quot;Büro&quot;) tarafından hazırlanmıştır.
+          uyarınca, veri sorumlusu sıfatıyla Acar Görgün Hukuk Bürosu (&quot;Büro&quot;) tarafından hazırlanmıştır.
         </p>
         <h2>İşlenen kişisel veriler</h2>
         <p>

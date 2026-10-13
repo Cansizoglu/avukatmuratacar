@@ -5,7 +5,7 @@ import ServiceCard from "@/components/ServiceCard";
 import PostCard from "@/components/PostCard";
 import CtaBand from "@/components/CtaBand";
 import Faq from "@/components/Faq";
-import { site, unsplash, images } from "@/data/site";
+import { site, unsplash, images, office } from "@/data/site";
 import { services } from "@/data/services";
 import { sortedPosts } from "@/data/blog";
 import { generalFaqs } from "@/data/faq";
@@ -52,14 +52,14 @@ export default function HomePage() {
         <div className="mx-auto max-w-site px-5 py-24 md:py-36">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em] text-gold-400">
             <span className="h-px w-10 bg-gold-400" />
-            İzmir Hukuk Bürosu
+            Çeşme / İzmir Hukuk Bürosu
           </p>
           <h1 className="mt-6 max-w-3xl font-serif text-4xl font-semibold leading-[1.1] text-white sm:text-5xl md:text-6xl">
             Hukuki süreçlerinizde <span className="italic text-gold-300">güvenilir</span> ve özenli temsil
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-200">
-            Avukat Murat Acar; aile, iş, ceza, gayrimenkul, miras, icra ve ticaret hukuku alanlarında bireylere ve
-            şirketlere danışmanlık ve dava takibi hizmeti vermektedir.
+            Acar Görgün Hukuk Bürosu; Av. Murat Acar ve Av. Ecem Görgün ile aile, iş, ceza, gayrimenkul, miras, icra ve
+            ticaret hukuku alanlarında bireylere ve şirketlere danışmanlık ve dava takibi hizmeti vermektedir.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
@@ -98,8 +98,8 @@ export default function HomePage() {
         <div className="relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={unsplash(images.gavelMarble, 900, 1000)}
-            alt="Hakim tokmağı"
+            src={office.reception}
+            alt="Acar Görgün Hukuk Bürosu resepsiyon alanı"
             loading="lazy"
             className="aspect-[9/10] w-full rounded-sm bg-navy-100 object-cover"
           />
@@ -109,10 +109,10 @@ export default function HomePage() {
           </div>
         </div>
         <div>
-          <SectionTitle eyebrow="Hakkımda" title="Avukat Murat Acar" />
+          <SectionTitle eyebrow="Hakkımızda" title="Acar Görgün Hukuk Bürosu" />
           <div className="mt-6 space-y-4 leading-relaxed text-ink/75">
             <p>
-              İzmir&apos;de faaliyet gösteren büromuz, müvekkillerinin hukuki sorunlarını dinlemeyi, doğru analiz etmeyi
+              Av. Murat Acar ve Av. Ecem Görgün tarafından kurulan, Çeşme&apos;de faaliyet gösteren büromuz, müvekkillerinin hukuki sorunlarını dinlemeyi, doğru analiz etmeyi
               ve en uygun çözüm yolunu birlikte belirlemeyi esas alır.
             </p>
             <p>
@@ -209,13 +209,18 @@ export default function HomePage() {
           <div className="lg:col-span-2">
             <div className="overflow-hidden rounded-sm bg-navy-950 text-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={unsplash(images.izmirClock, 800, 520)} alt="İzmir Saat Kulesi" loading="lazy" className="aspect-[16/10] w-full object-cover" />
+              <img src={office.entrance} alt="Acar Görgün Hukuk Bürosu giriş kapısı" loading="lazy" className="aspect-[16/10] w-full object-cover" />
               <div className="p-8">
-                <h3 className="font-serif text-2xl font-semibold">İzmir Büromuz</h3>
+                <h3 className="font-serif text-2xl font-semibold">Çeşme Büromuz</h3>
                 <ul className="mt-5 space-y-4 text-navy-200">
                   <li className="flex gap-3">
                     <Icon name="pin" className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" />
-                    {site.address.full}
+                    <span>
+                      {site.address.full}
+                      <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-1 block text-sm font-semibold text-gold-300 hover:text-gold-200">
+                        Haritada aç
+                      </a>
+                    </span>
                   </li>
                   <li>
                     <a href={site.phoneHref} className="flex gap-3 font-semibold text-white hover:text-gold-300">

@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
-import { site, unsplash, images } from "@/data/site";
+import { site, office } from "@/data/site";
 import { services } from "@/data/services";
 
 const sans = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-sans", display: "swap" });
@@ -16,7 +16,7 @@ const serif = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: site.title, template: "%s | Avukat Murat Acar" },
+  title: { default: site.title, template: "%s | Acar Görgün Hukuk" },
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
@@ -25,10 +25,9 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.description,
-    images: [{ url: unsplash(images.heroLady, 1200, 630), width: 1200, height: 630 }],
+    images: [{ url: office.entrance, width: 1448, height: 1086 }],
   },
   twitter: { card: "summary_large_image" },
-  icons: { icon: "/icon.svg" },
 };
 
 const jsonLd = {
@@ -38,7 +37,7 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   telephone: "+90 545 310 34 09",
-  image: unsplash(images.heroLady, 1200, 630),
+  image: `${site.url}${office.entrance}`,
   description: site.description,
   address: {
     "@type": "PostalAddress",
@@ -48,7 +47,10 @@ const jsonLd = {
     postalCode: site.address.postalCode,
     addressCountry: "TR",
   },
-  areaServed: { "@type": "City", name: "İzmir" },
+  areaServed: [
+    { "@type": "City", name: "Çeşme" },
+    { "@type": "City", name: "İzmir" },
+  ],
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -56,7 +58,12 @@ const jsonLd = {
     closes: "18:00",
   },
   knowsAbout: services.map((s) => s.title),
-  founder: { "@type": "Person", name: "Murat Acar", jobTitle: "Avukat" },
+  hasMap: site.mapsUrl,
+  logo: `${site.url}${office.logo}`,
+  employee: [
+    { "@type": "Person", name: "Murat Acar", jobTitle: "Avukat" },
+    { "@type": "Person", name: "Ecem Görgün", jobTitle: "Avukat" },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

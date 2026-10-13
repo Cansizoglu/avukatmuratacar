@@ -4,12 +4,13 @@ import PageHero from "@/components/PageHero";
 import SectionTitle from "@/components/SectionTitle";
 import CtaBand from "@/components/CtaBand";
 import Icon from "@/components/Icon";
-import { images, unsplash, site } from "@/data/site";
+import { LogoMark } from "@/components/Logo";
+import { images, site, office } from "@/data/site";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Hakkımda",
-  description: "Avukat Murat Acar ve İzmir'deki hukuk bürosunun çalışma anlayışı, ilkeleri ve hizmet verdiği alanlar.",
+  title: "Hakkımızda",
+  description: "Acar Görgün Hukuk Bürosu, Av. Murat Acar ve Av. Ecem Görgün; Çeşme / İzmir'deki büromuzun çalışma anlayışı, ilkeleri ve hizmet verdiği alanlar.",
   alternates: { canonical: "/hakkimda" },
 };
 
@@ -24,17 +25,18 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="Hakkımda"
+        title="Hakkımızda"
         subtitle="Hukuki sorunlara, müvekkilin ihtiyacını merkeze alan, açık ve özenli bir yaklaşım."
         image={images.books}
-        crumbs={[{ href: "/", label: "Ana Sayfa" }, { label: "Hakkımda" }]}
+        crumbs={[{ href: "/", label: "Ana Sayfa" }, { label: "Hakkımızda" }]}
       />
       <section className="mx-auto grid max-w-site gap-14 px-5 py-20 lg:grid-cols-2">
         <div>
-          <SectionTitle eyebrow="Av. Murat Acar" title="Çalışma anlayışımız" />
+          <SectionTitle eyebrow="Acar Görgün Hukuk" title="Çalışma anlayışımız" />
           <div className="mt-6 space-y-5 leading-relaxed text-ink/75">
             <p>
-              Avukat Murat Acar, {site.bar}&apos;na kayıtlı olarak İzmir&apos;de serbest avukatlık yapmaktadır. Büro,
+              Acar Görgün Hukuk Bürosu, {site.bar}&apos;na kayıtlı Av. Murat Acar ve Av. Ecem Görgün tarafından
+              Çeşme / İzmir&apos;de kurulmuş bir avukatlık ofisidir. Büro,
               bireysel müvekkillere ve şirketlere danışmanlık, sözleşme hazırlama, arabuluculuk süreçlerinde temsil ve
               dava takibi hizmetleri sunmaktadır.
             </p>
@@ -52,9 +54,41 @@ export default function AboutPage() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={unsplash(images.ladyScales, 600, 800)} alt="Adalet terazisi tutan heykel" className="aspect-[3/4] w-full rounded-sm bg-navy-100 object-cover" />
+          <img src={office.room} alt="Avukat çalışma odası" className="aspect-[3/4] w-full rounded-sm bg-navy-100 object-cover" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={unsplash(images.writing, 600, 800)} alt="Belge imzalanması" className="mt-10 aspect-[3/4] w-full rounded-sm bg-navy-100 object-cover" />
+          <img src={office.meeting} alt="Toplantı odası" className="mt-10 aspect-[3/4] w-full rounded-sm bg-navy-100 object-cover" />
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-site px-5">
+          <SectionTitle center eyebrow="Avukatlarımız" title="Ekibimiz" />
+          <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
+            {site.lawyers.map((name) => (
+              <div key={name} className="rounded-sm border border-navy-100 p-8 text-center">
+                <LogoMark className="mx-auto h-14 w-14" />
+                <h3 className="mt-5 font-serif text-2xl font-semibold text-navy-900">{name}</h3>
+                <p className="mt-1 text-sm font-medium uppercase tracking-[0.2em] text-gold-600">Avukat · {site.bar}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-site px-5">
+          <SectionTitle center eyebrow="Büromuz" title="Çeşme ofisimiz" />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              [office.door, "Büro girişi"],
+              [office.reception, "Resepsiyon"],
+              [office.room, "Çalışma odası"],
+              [office.meeting, "Toplantı odası"],
+            ].map(([src, alt]) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={src} src={src} alt={alt} loading="lazy" className="aspect-[4/3] w-full rounded-sm bg-navy-100 object-cover" />
+            ))}
+          </div>
         </div>
       </section>
 

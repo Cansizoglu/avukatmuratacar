@@ -11,7 +11,7 @@ export default function ContactForm() {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const text = [
-      "Merhaba Av. Murat Acar, web siteniz üzerinden randevu talebinde bulunuyorum.",
+      "Merhaba, Acar Görgün Hukuk Bürosu'na web siteniz üzerinden randevu talebinde bulunuyorum.",
       `Ad Soyad: ${f.get("name")}`,
       `Telefon: ${f.get("phone")}`,
       `Konu: ${f.get("topic")}`,

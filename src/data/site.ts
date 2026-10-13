@@ -1,20 +1,25 @@
 export const site = {
-  name: "Avukat Murat Acar",
-  shortName: "Av. Murat Acar",
-  title: "Avukat Murat Acar | İzmir Avukat ve Hukuk Bürosu",
+  name: "Acar Görgün Hukuk Bürosu",
+  shortName: "Acar Görgün Hukuk",
+  title: "Acar Görgün Hukuk Bürosu | Çeşme / İzmir Avukat",
   description:
-    "Avukat Murat Acar, İzmir'de aile, iş, ceza, gayrimenkul, miras, icra ve ticaret hukuku alanlarında danışmanlık ve dava takibi hizmeti vermektedir.",
+    "Acar Görgün Hukuk Bürosu; Av. Murat Acar ve Av. Ecem Görgün ile Çeşme / İzmir'de aile, iş, ceza, gayrimenkul, miras, icra ve ticaret hukuku alanlarında danışmanlık ve dava takibi hizmeti vermektedir.",
+  lawyers: ["Av. Murat Acar", "Av. Ecem Görgün"],
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://avukatmuratacar.com").replace(/\/$/, ""),
   phone: "0545 310 34 09",
   phoneHref: "tel:+905453103409",
   whatsapp: "905453103409",
   address: {
-    street: "Adalet Mah. Manas Bulvarı No: 39 Kat: 5",
-    district: "Bayraklı",
+    street: "Sakarya Mah. 3101 Sok. No: 2 Daire: 8",
+    district: "Çeşme",
     city: "İzmir",
-    postalCode: "35530",
-    full: "Adalet Mah. Manas Bulvarı No: 39 Kat: 5, 35530 Bayraklı / İzmir",
+    postalCode: "35930",
+    full: "Sakarya Mah. 3101 Sok. No: 2 Daire: 8, 35930 Çeşme / İzmir",
   },
+  /** Google Haritalar paylaşım bağlantısı (yol tarifi düğmesi) */
+  mapsUrl: "https://share.google/C77fp4VP0iMPOoXiv",
+  /** Harita gömme sorgusu */
+  mapQuery: "Sakarya Mahallesi 3101 Sokak No:2, 35930 Çeşme, İzmir",
   hours: "Pazartesi - Cuma 09:00 - 18:00",
   bar: "İzmir Barosu",
 };
@@ -25,6 +30,17 @@ export const whatsappLink = (text?: string) =>
 /** Unsplash görsel adresi. Unsplash CDN'i boyutlandırmayı kendisi yapar. */
 export const unsplash = (id: string, w = 1600, h?: number) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ""}&q=75`;
+
+/** Büronun kendi görselleri (public/img) */
+export const office = {
+  logo: "/img/logo.png",
+  mark: "/img/mark-180.png",
+  entrance: "/img/ofis-giris.jpg",
+  door: "/img/ofis-kapi.jpg",
+  reception: "/img/ofis-resepsiyon.jpg",
+  room: "/img/ofis-oda.jpg",
+  meeting: "/img/ofis-toplanti.jpg",
+};
 
 export const images = {
   heroLady: "photo-1589829545856-d10d557cf95f",

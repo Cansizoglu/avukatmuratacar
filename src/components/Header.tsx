@@ -9,7 +9,7 @@ import { site } from "@/data/site";
 
 const nav = [
   { href: "/", label: "Ana Sayfa" },
-  { href: "/hakkimda", label: "Hakkımda" },
+  { href: "/hakkimda", label: "Hakkımızda" },
   { href: "/hizmetler", label: "Çalışma Alanları" },
   { href: "/blog", label: "Makaleler" },
   { href: "/sss", label: "S.S.S." },

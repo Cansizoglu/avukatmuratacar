@@ -12,8 +12,8 @@ export default function Footer() {
         <div>
           <Logo light />
           <p className="mt-5 text-sm leading-relaxed text-navy-300">
-            {site.bar}&apos;na kayıtlı Avukat Murat Acar, İzmir&apos;de bireylere ve şirketlere hukuki danışmanlık ve
-            dava takibi hizmeti vermektedir.
+            {site.bar}&apos;na kayıtlı Av. Murat Acar ve Av. Ecem Görgün, Çeşme / İzmir&apos;de bireylere ve şirketlere
+            hukuki danışmanlık ve dava takibi hizmeti vermektedir.
           </p>
         </div>
         <div>
@@ -68,7 +68,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-navy-800">
         <div className="mx-auto flex max-w-site flex-col gap-3 px-5 py-6 text-xs text-navy-400 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Avukat Murat Acar. Tüm hakları saklıdır.</p>
+          <p>© {new Date().getFullYear()} {site.name}. Tüm hakları saklıdır.</p>
           <p className="max-w-2xl">
             Bu internet sitesi, Türkiye Barolar Birliği Meslek Kuralları ve Reklam Yasağı Yönetmeliği çerçevesinde
             yalnızca bilgilendirme amacıyla hazırlanmıştır. İçerikler hukuki mütalaa niteliği taşımaz.

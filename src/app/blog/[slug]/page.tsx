@@ -38,7 +38,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     description: p.excerpt,
     datePublished: p.date,
     image: unsplash(p.image, 1200, 630),
-    author: { "@type": "Person", name: "Av. Murat Acar" },
+    author: { "@type": "Organization", name: site.name },
     publisher: { "@id": `${site.url}/#hukuk-burosu` },
     mainEntityOfPage: `${site.url}/blog/${p.slug}`,
   };
@@ -56,7 +56,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           <span className="font-semibold uppercase tracking-[0.15em] text-gold-600">{p.category}</span>
           <time dateTime={p.date}>{formatDate(p.date)}</time>
           <span>{readingMinutes(p.body)} dk okuma</span>
-          <span>Av. Murat Acar</span>
+          <span>{site.name}</span>
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={unsplash(p.image, 1200, 640)} alt={p.title} className="mt-8 aspect-[15/8] w-full rounded-sm bg-navy-100 object-cover" />

@@ -6,12 +6,12 @@ import { images, site, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "İletişim",
-  description: `Avukat Murat Acar ile iletişim: ${site.phone}. ${site.address.full}.`,
+  description: `Acar Görgün Hukuk Bürosu ile iletişim: ${site.phone}. ${site.address.full}.`,
   alternates: { canonical: "/iletisim" },
 };
 
 export default function ContactPage() {
-  const mapQuery = encodeURIComponent(`${site.address.street}, ${site.address.district}, ${site.address.city}`);
+  const mapQuery = encodeURIComponent(site.mapQuery);
   return (
     <>
       <PageHero
@@ -52,6 +52,15 @@ export default function ContactPage() {
             <span>
               <span className="block text-sm text-ink/55">Adres</span>
               <span className="block font-medium text-navy-900">{site.address.full}</span>
+              <a
+                href={site.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-gold-700 hover:text-gold-600"
+              >
+                Haritada aç / Yol tarifi al
+                <Icon name="arrow" className="h-4 w-4" />
+              </a>
             </span>
           </div>
           <div className="flex gap-4 rounded-sm border border-navy-100 bg-white p-6">

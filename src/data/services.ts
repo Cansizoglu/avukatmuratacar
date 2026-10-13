@@ -218,7 +218,7 @@ export const services: Service[] = [
     image: images.meeting,
     intro: [
       "Ticari hayatta hukuki riskler çoğu zaman sözleşme imzalanmadan önce şekillenir. Doğru kurgulanmış sözleşmeler ve şirket içi düzenlemeler, uyuşmazlıkların önemli bir kısmını baştan engeller.",
-      "Büromuz, İzmir ve çevresindeki şirketlere sözleşme hazırlama, genel kurul işlemleri, ortaklık uyuşmazlıkları ve düzenli (sürekli) hukuki danışmanlık hizmeti verir.",
+      "Büromuz, Çeşme, İzmir ve çevresindeki şirketlere sözleşme hazırlama, genel kurul işlemleri, ortaklık uyuşmazlıkları ve düzenli (sürekli) hukuki danışmanlık hizmeti verir.",
     ],
     topics: [
       "Limited ve anonim şirket kuruluşu, esas sözleşme hazırlanması",

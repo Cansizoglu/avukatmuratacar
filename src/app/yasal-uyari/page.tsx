@@ -4,7 +4,7 @@ import { images } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Yasal Uyarı",
-  description: "Avukat Murat Acar internet sitesinin kullanım koşulları ve yasal uyarı metni.",
+  description: "Acar Görgün Hukuk Bürosu internet sitesinin kullanım koşulları ve yasal uyarı metni.",
   alternates: { canonical: "/yasal-uyari" },
 };
 

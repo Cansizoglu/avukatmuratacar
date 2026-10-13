@@ -13,7 +13,7 @@ export const generalFaqs = [
   },
   {
     q: "İzmir dışındaki davalarda da hizmet veriyor musunuz?",
-    a: "Büromuz İzmir merkezlidir. Diğer şehirlerdeki dosyalarda, işin niteliğine göre UYAP üzerinden takip veya yerinde duruşma katılımı ile hizmet verilebilir.",
+    a: "Büromuz Çeşme / İzmir merkezlidir. Diğer şehirlerdeki dosyalarda, işin niteliğine göre UYAP üzerinden takip veya yerinde duruşma katılımı ile hizmet verilebilir.",
   },
   {
     q: "Görüştüğüm konular gizli kalır mı?",
