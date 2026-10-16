@@ -1,25 +1,10 @@
 import Icon from "./Icon";
-import { site, whatsappLink } from "@/data/site";
-
-/** "Av. Murat Acar" -> "Av. M. Acar" */
-const shortName = (name: string) => name.replace(/^Av\. (\S)\S* /, "Av. $1. ");
+import { shortName, site, whatsappLink } from "@/data/site";
 
 /** Sayfanın altına sabit iletişim çubuğu: her avukat için "Hemen Ara" ve "WhatsApp" kutusu. */
 export default function FloatingContact() {
-  const ecem = site.lawyers.find((l) => l.slug === "ecem-gorgun");
-  const murat = site.lawyers.find((l) => l.slug === "murat-acar");
-  const people = [
-    {
-      name: ecem?.name ?? "Av. Ecem Görgün",
-      phoneHref: ecem?.phoneHref ?? site.phoneHref,
-      whatsapp: ecem?.whatsapp ?? site.whatsapp,
-    },
-    {
-      name: murat?.name ?? "Av. Murat Acar",
-      phoneHref: murat?.phoneHref ?? site.phoneHref,
-      whatsapp: murat?.whatsapp ?? site.whatsapp,
-    },
-  ];
+  // Sıra: önce Av. Ecem Görgün, sonra Av. Murat Acar
+  const people = [...site.lawyers].reverse();
   const buttons = people.flatMap((p) => [
     { kind: "call" as const, name: p.name, href: p.phoneHref },
     {
@@ -41,9 +26,7 @@ export default function FloatingContact() {
             href={b.href}
             {...(b.kind === "wa" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className={`flex min-h-[52px] flex-col items-center justify-center gap-0.5 rounded-sm px-1 py-1.5 text-center leading-tight transition sm:flex-row sm:gap-2.5 sm:py-2.5 ${
-              b.kind === "call"
-                ? "bg-gold-400 text-navy-950 hover:bg-gold-300"
-                : "bg-[#1f8f4e] text-white hover:bg-[#1a7a42]"
+              b.kind === "call" ? "bg-gold-400 text-navy-950 hover:bg-gold-300" : "bg-[#1f8f4e] text-white hover:bg-[#1a7a42]"
             }`}
           >
             <Icon name={b.kind === "call" ? "phone" : "whatsapp"} className="h-5 w-5 shrink-0" />

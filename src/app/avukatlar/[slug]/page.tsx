@@ -34,7 +34,8 @@ export default function LawyerPage({ params }: { params: { slug: string } }) {
     jobTitle: "Avukat",
     image: `${site.url}${l.photo}`,
     url: `${site.url}/avukatlar/${l.slug}`,
-    ...(l.phone ? { telephone: l.phone } : {}),
+    telephone: l.phone,
+    email: l.email,
     worksFor: { "@id": `${site.url}/#hukuk-burosu` },
     memberOf: { "@type": "Organization", name: site.bar },
   };
@@ -90,20 +91,27 @@ export default function LawyerPage({ params }: { params: { slug: string } }) {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href={l.phoneHref ?? site.phoneHref}
+              href={l.phoneHref}
               className="flex items-center gap-2 rounded-sm bg-navy-900 px-6 py-3.5 font-semibold text-white transition hover:bg-navy-800"
             >
               <Icon name="phone" className="h-5 w-5 text-gold-400" />
-              {l.phone ?? site.phone}
+              {l.phone}
             </a>
             <a
-              href={whatsappLink(`Merhaba ${l.name}, randevu almak istiyorum.`)}
+              href={whatsappLink(`Merhaba ${l.name}, randevu almak istiyorum.`, l.whatsapp)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-sm border border-navy-200 px-6 py-3.5 font-semibold text-navy-900 transition hover:border-gold-400 hover:text-gold-700"
             >
               <Icon name="whatsapp" className="h-5 w-5" />
               WhatsApp ile yazın
+            </a>
+            <a
+              href={`mailto:${l.email}`}
+              className="flex items-center gap-2 rounded-sm border border-navy-200 px-6 py-3.5 font-semibold text-navy-900 transition hover:border-gold-400 hover:text-gold-700"
+            >
+              <Icon name="mail" className="h-5 w-5" />
+              {l.email}
             </a>
           </div>
 

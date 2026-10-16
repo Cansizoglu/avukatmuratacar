@@ -1,31 +1,84 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { services } from "@/data/services";
-import { whatsappLink } from "@/data/site";
+import { site, whatsappLink } from "@/data/site";
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [lawyerSlug, setLawyerSlug] = useState(site.lawyers[0].slug);
+  const [sent, setSent] = useState<"" | "mail" | "wa">("");
+  const lawyer = site.lawyers.find((l) => l.slug === lawyerSlug) ?? site.lawyers[0];
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    const text = [
-      "Merhaba, Acar Görgün Hukuk Bürosu'na web siteniz üzerinden randevu talebinde bulunuyorum.",
+  function buildMessage(f: FormData) {
+    return [
+      `Sayın ${lawyer.name},`,
+      "Acar Görgün Hukuk Bürosu web sitesi üzerinden randevu talebinde bulunuyorum.",
+      "",
       `Ad Soyad: ${f.get("name")}`,
       `Telefon: ${f.get("phone")}`,
       `Konu: ${f.get("topic")}`,
+      "",
       `Mesaj: ${f.get("message")}`,
     ].join("\n");
-    window.open(whatsappLink(text), "_blank", "noopener,noreferrer");
-    setSent(true);
+  }
+
+  function send(channel: "mail" | "wa") {
+    const form = formRef.current;
+    if (!form || !form.reportValidity()) return;
+    const f = new FormData(form);
+    const text = buildMessage(f);
+    if (channel === "mail") {
+      const subject = `Randevu talebi - ${f.get("topic")} - ${f.get("name")}`;
+      window.location.href = `mailto:${lawyer.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    } else {
+      window.open(whatsappLink(text, lawyer.whatsapp), "_blank", "noopener,noreferrer");
+    }
+    setSent(channel);
   }
 
   const field =
     "mt-1.5 w-full rounded-sm border border-navy-200 bg-white px-4 py-3 text-ink outline-none transition focus:border-gold-400 focus:ring-2 focus:ring-gold-200";
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form
+      ref={formRef}
+      onSubmit={(e) => {
+        e.preventDefault();
+        send("mail");
+      }}
+      className="space-y-5"
+    >
+      <fieldset>
+        <legend className="text-sm font-medium text-navy-800">Mesajınız hangi avukatımıza iletilsin?</legend>
+        <div className="mt-2 grid gap-3 sm:grid-cols-2">
+          {site.lawyers.map((l) => (
+            <label
+              key={l.slug}
+              className={`flex cursor-pointer items-center gap-3 rounded-sm border p-3 transition ${
+                lawyerSlug === l.slug
+                  ? "border-gold-400 bg-gold-50 ring-2 ring-gold-200"
+                  : "border-navy-200 hover:border-gold-300"
+              }`}
+            >
+              <input
+                type="radio"
+                name="lawyer"
+                value={l.slug}
+                checked={lawyerSlug === l.slug}
+                onChange={() => setLawyerSlug(l.slug)}
+                className="h-4 w-4 accent-navy-900"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={l.photo} alt="" className="h-11 w-11 rounded-full object-cover object-top" />
+              <span className="min-w-0 leading-tight">
+                <span className="block font-semibold text-navy-900">{l.name}</span>
+                <span className="block truncate text-xs text-ink/60">{l.email}</span>
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block text-sm font-medium text-navy-800">
           Ad Soyad
@@ -59,15 +112,26 @@ export default function ContactForm() {
           kapsamında işlenmesini kabul ediyorum.
         </span>
       </label>
-      <button
-        type="submit"
-        className="w-full rounded-sm bg-navy-900 px-6 py-3.5 font-semibold text-white transition hover:bg-navy-800 sm:w-auto"
-      >
-        WhatsApp ile Gönder
-      </button>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <button
+          type="submit"
+          className="rounded-sm bg-navy-900 px-6 py-3.5 font-semibold text-white transition hover:bg-navy-800"
+        >
+          E-posta ile Gönder
+        </button>
+        <button
+          type="button"
+          onClick={() => send("wa")}
+          className="rounded-sm bg-[#1f8f4e] px-6 py-3.5 font-semibold text-white transition hover:bg-[#1a7a42]"
+        >
+          WhatsApp ile Gönder
+        </button>
+      </div>
       {sent && (
         <p className="text-sm text-navy-700" role="status">
-          Mesajınız WhatsApp&apos;ta hazırlandı. Gönder tuşuna bastığınızda bize ulaşacaktır.
+          {sent === "mail"
+            ? `Mesajınız e-posta uygulamanızda ${lawyer.email} adresine hazırlandı. Gönder tuşuna bastığınızda ${lawyer.name}'a ulaşacaktır.`
+            : `Mesajınız WhatsApp'ta ${lawyer.name} için hazırlandı. Gönder tuşuna bastığınızda iletilecektir.`}
         </p>
       )}
     </form>

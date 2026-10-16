@@ -6,7 +6,7 @@ import { images, site, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "İletişim",
-  description: `Acar Görgün Hukuk Bürosu ile iletişim: ${site.phone}. ${site.address.full}.`,
+  description: `Acar Görgün Hukuk Bürosu ile iletişim: ${site.lawyers.map((l) => `${l.name} ${l.phone}`).join(", ")}. ${site.address.full}.`,
   alternates: { canonical: "/iletisim" },
 };
 
@@ -22,32 +22,26 @@ export default function ContactPage() {
       />
       <section className="mx-auto grid max-w-site gap-12 px-5 py-20 lg:grid-cols-5">
         <div className="space-y-5 lg:col-span-2">
-          <a href={site.phoneHref} className="flex gap-4 rounded-sm bg-navy-900 p-6 text-white transition hover:bg-navy-800">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-gold-400 text-navy-950">
-              <Icon name="phone" />
-            </span>
-            <span>
-              <span className="block text-sm text-navy-300">Av. Murat Acar</span>
-              <span className="block font-serif text-2xl">{site.phone}</span>
-            </span>
-          </a>
-          {site.lawyers
-            .filter((l) => l.phone)
-            .map((l) => (
-              <a
-                key={l.name}
-                href={l.phoneHref}
-                className="flex gap-4 rounded-sm border border-navy-100 bg-white p-6 transition hover:border-gold-300"
-              >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-gold-400 text-navy-950">
-                  <Icon name="phone" />
+          {site.lawyers.map((l) => (
+            <div key={l.slug} className="rounded-sm bg-navy-900 p-6 text-white">
+              <p className="font-serif text-xl font-semibold">{l.name}</p>
+              <a href={l.phoneHref} className="mt-4 flex items-center gap-3 hover:text-gold-300">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-gold-400 text-navy-950">
+                  <Icon name="phone" className="h-5 w-5" />
                 </span>
-                <span>
-                  <span className="block text-sm text-ink/55">{l.name}</span>
-                  <span className="block font-serif text-2xl text-navy-900">{l.phone}</span>
-                </span>
+                <span className="font-serif text-2xl">{l.phone}</span>
               </a>
-            ))}
+              <a
+                href={`mailto:${l.email}`}
+                className="mt-3 flex items-center gap-3 break-all text-navy-200 hover:text-gold-300"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-white/10 text-gold-300">
+                  <Icon name="mail" className="h-5 w-5" />
+                </span>
+                {l.email}
+              </a>
+            </div>
+          ))}
           <a
             href={whatsappLink("Merhaba, randevu almak istiyorum.")}
             target="_blank"
@@ -58,7 +52,7 @@ export default function ContactPage() {
               <Icon name="whatsapp" />
             </span>
             <span>
-              <span className="block text-sm text-ink/55">WhatsApp</span>
+              <span className="block text-sm text-ink/55">WhatsApp · Av. Murat Acar</span>
               <span className="block font-semibold text-navy-900">Mesaj gönderin</span>
             </span>
           </a>
@@ -94,7 +88,8 @@ export default function ContactPage() {
         <div className="rounded-sm border border-navy-100 bg-white p-7 md:p-10 lg:col-span-3">
           <h2 className="font-serif text-2xl font-semibold text-navy-900">Randevu talep formu</h2>
           <p className="mt-2 text-[15px] text-ink/65">
-            Formu doldurduğunuzda mesajınız WhatsApp üzerinden hazırlanır; gönderdiğinizde en kısa sürede dönüş yapılır.
+            Mesajınızın hangi avukatımıza iletileceğini seçin. Formu e-posta veya WhatsApp ile gönderebilirsiniz; en
+            kısa sürede dönüş yapılır.
           </p>
           <div className="mt-8">
             <ContactForm />

@@ -11,7 +11,8 @@ type Name =
   | "scale"
   | "menu"
   | "close"
-  | "mail";
+  | "mail"
+  | "chevron";
 
 const paths: Record<Name, JSX.Element> = {
   family: (
@@ -98,6 +99,7 @@ const paths: Record<Name, JSX.Element> = {
   ),
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   close: <path d="M6 6l12 12M18 6 6 18" />,
+  chevron: <path d="m6 9 6 6 6-6" />,
   mail: (
     <>
       <rect x="3" y="5" width="18" height="14" rx="2" />

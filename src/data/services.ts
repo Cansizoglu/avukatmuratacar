@@ -242,7 +242,7 @@ export const services: Service[] = [
   },
   {
     slug: "trafik-kazasi-ve-tazminat",
-    title: "Trafik Kazası ve Tazminat Hukuku",
+    title: "Trafik Kazası ve Sigorta Hukuku",
     short:
       "Maddi hasar, araç değer kaybı, yaralanma ve ölümlü kazalarda sigorta ve tazminat süreçleri.",
     icon: "car",

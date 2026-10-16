@@ -63,13 +63,13 @@ export default function HomePage() {
             ticaret hukuku alanlarında bireylere ve şirketlere danışmanlık ve dava takibi hizmeti vermektedir.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href={site.phoneHref}
+            <Link
+              href="/iletisim"
               className="flex items-center gap-2 rounded-sm bg-gold-400 px-7 py-4 font-semibold text-navy-950 transition hover:bg-gold-300"
             >
-              <Icon name="phone" className="h-5 w-5" />
-              {site.phone}
-            </a>
+              <Icon name="mail" className="h-5 w-5" />
+              Randevu Talebi
+            </Link>
             <Link
               href="/hizmetler"
               className="flex items-center gap-2 rounded-sm border border-white/30 px-7 py-4 font-semibold text-white transition hover:border-gold-300 hover:text-gold-300"
@@ -240,12 +240,17 @@ export default function HomePage() {
                       </a>
                     </span>
                   </li>
-                  <li>
-                    <a href={site.phoneHref} className="flex gap-3 font-semibold text-white hover:text-gold-300">
-                      <Icon name="phone" className="h-5 w-5 shrink-0 text-gold-400" />
-                      {site.phone}
-                    </a>
-                  </li>
+                  {site.lawyers.map((l) => (
+                    <li key={l.slug}>
+                      <a href={l.phoneHref} className="flex gap-3 font-semibold text-white hover:text-gold-300">
+                        <Icon name="phone" className="h-5 w-5 shrink-0 text-gold-400" />
+                        <span>
+                          {l.phone}
+                          <span className="block text-xs font-normal text-navy-300">{l.name}</span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
                   <li className="flex gap-3">
                     <Icon name="clock" className="h-5 w-5 shrink-0 text-gold-400" />
                     {site.hours}

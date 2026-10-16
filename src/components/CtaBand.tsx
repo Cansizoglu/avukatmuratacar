@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Icon from "./Icon";
-import { site, unsplash, images } from "@/data/site";
+import { shortName, site, unsplash, images } from "@/data/site";
 
 export default function CtaBand() {
   return (
@@ -15,13 +15,19 @@ export default function CtaBand() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a
-            href={site.phoneHref}
-            className="flex items-center gap-2 rounded-sm bg-gold-400 px-6 py-3.5 font-semibold text-navy-950 transition hover:bg-gold-300"
-          >
-            <Icon name="phone" className="h-5 w-5" />
-            {site.phone}
-          </a>
+          {site.lawyers.map((l) => (
+            <a
+              key={l.slug}
+              href={l.phoneHref}
+              className="flex items-center gap-2 rounded-sm bg-gold-400 px-6 py-3 font-semibold text-navy-950 transition hover:bg-gold-300"
+            >
+              <Icon name="phone" className="h-5 w-5" />
+              <span className="leading-tight">
+                {l.phone}
+                <span className="block text-xs font-medium opacity-75">{shortName(l.name)}</span>
+              </span>
+            </a>
+          ))}
           <Link
             href="/iletisim"
             className="flex items-center gap-2 rounded-sm border border-white/30 px-6 py-3.5 font-semibold text-white transition hover:border-gold-300 hover:text-gold-300"

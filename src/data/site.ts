@@ -5,9 +5,10 @@ export type Lawyer = {
   photo: string;
   facts: string[];
   bio: string[];
-  phone?: string;
-  phoneHref?: string;
-  whatsapp?: string;
+  phone: string;
+  phoneHref: string;
+  whatsapp: string;
+  email: string;
 };
 
 export const site = {
@@ -20,6 +21,10 @@ export const site = {
     {
       name: "Av. Murat Acar",
       slug: "murat-acar",
+      phone: "0545 310 34 09",
+      phoneHref: "tel:+905453103409",
+      whatsapp: "905453103409",
+      email: "av.murat-acar@hotmail.com",
       short: "Dokuz Eylül Üniversitesi Hukuk Fakültesi mezunu; 2018'den bu yana serbest avukat.",
       photo: "/img/murat-acar.jpg",
       facts: ["1994, Çeşme", "Dokuz Eylül Üniversitesi Hukuk Fakültesi, 2017", "2018'den bu yana serbest avukat"],
@@ -36,6 +41,7 @@ export const site = {
       phone: "0530 384 04 84",
       phoneHref: "tel:+905303840484",
       whatsapp: "905303840484",
+      email: "av.ecemgorgun@gmail.com",
       facts: ["1998, İstanbul", "İstanbul Bilgi Üniversitesi Hukuk Fakültesi, 2021 (onur derecesi)", "2022'den bu yana serbest avukat"],
       bio: [
         "1998 yılında İstanbul’da doğan Av. Ecem Görgün, 2021 yılında İstanbul Bilgi Üniversitesi Hukuk Fakültesi’nden onur derecesiyle mezun olmuştur. 2022 yılından itibaren serbest avukat olarak mesleki faaliyetlerini sürdürmekte ve müvekkillerine çeşitli hukuki alanlarda danışmanlık ve avukatlık hizmetleri sunmaktadır.",
@@ -110,5 +116,8 @@ export const images = {
   izmirBay: "photo-1719688550640-e27dda479c57",
   officeMan: "photo-1605602517229-cdbfc3dfb70c",
 };
+
+/** "Av. Murat Acar" -> "Av. M. Acar" */
+export const shortName = (name: string) => name.replace(/^Av\. (\S)\S* /, "Av. $1. ");
 
 export const getLawyer = (slug: string) => site.lawyers.find((l) => l.slug === slug);

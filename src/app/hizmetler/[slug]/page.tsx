@@ -8,7 +8,7 @@ import PostCard from "@/components/PostCard";
 import CtaBand from "@/components/CtaBand";
 import { services, getService } from "@/data/services";
 import { posts } from "@/data/blog";
-import { site, unsplash, whatsappLink } from "@/data/site";
+import { shortName, site, unsplash, whatsappLink } from "@/data/site";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -72,13 +72,17 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <p className="mt-2 text-sm leading-relaxed text-navy-200">
               {s.title} alanındaki konunuz için randevu alabilirsiniz.
             </p>
-            <a
-              href={site.phoneHref}
-              className="mt-5 flex items-center justify-center gap-2 rounded-sm bg-gold-400 px-5 py-3 font-semibold text-navy-950 hover:bg-gold-300"
-            >
-              <Icon name="phone" className="h-5 w-5" />
-              {site.phone}
-            </a>
+            {site.lawyers.map((l, i) => (
+              <a
+                key={l.slug}
+                href={l.phoneHref}
+                className={`${i === 0 ? "mt-5" : "mt-3"} flex items-center justify-center gap-2 rounded-sm bg-gold-400 px-5 py-3 font-semibold text-navy-950 hover:bg-gold-300`}
+              >
+                <Icon name="phone" className="h-5 w-5" />
+                {l.phone}
+                <span className="text-xs font-medium opacity-75">{shortName(l.name)}</span>
+              </a>
+            ))}
             <a
               href={whatsappLink(`Merhaba, ${s.title} konusunda bilgi almak istiyorum.`)}
               target="_blank"

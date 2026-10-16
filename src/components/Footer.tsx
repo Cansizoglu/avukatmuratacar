@@ -47,30 +47,27 @@ export default function Footer() {
               <Icon name="pin" className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" />
               <span>{site.address.full}</span>
             </li>
-            <li>
-              <a href={site.phoneHref} className="flex gap-3 hover:text-gold-300">
-                <Icon name="phone" className="h-5 w-5 shrink-0 text-gold-400" />
+            {site.lawyers.map((l) => (
+              <li key={l.slug} className="flex gap-3">
+                <Icon name="phone" className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" />
                 <span>
-                  {site.phone}
-                  <span className="block text-xs text-navy-400">Av. Murat Acar</span>
-                </span>
-              </a>
-            </li>
-            {site.lawyers
-              .filter((l) => l.phone)
-              .map((l) => (
-                <li key={l.slug}>
-                  <a href={l.phoneHref} className="flex gap-3 hover:text-gold-300">
-                    <Icon name="phone" className="h-5 w-5 shrink-0 text-gold-400" />
-                    <span>
-                      {l.phone}
-                      <span className="block text-xs text-navy-400">{l.name}</span>
-                    </span>
+                  <span className="block text-xs text-navy-400">{l.name}</span>
+                  <a href={l.phoneHref} className="block hover:text-gold-300">
+                    {l.phone}
                   </a>
-                </li>
-              ))}
+                  <a href={`mailto:${l.email}`} className="block break-all hover:text-gold-300">
+                    {l.email}
+                  </a>
+                </span>
+              </li>
+            ))}
             <li>
-              <a href={whatsappLink()} className="flex gap-3 hover:text-gold-300" target="_blank" rel="noopener noreferrer">
+              <a
+                href={whatsappLink()}
+                className="flex gap-3 hover:text-gold-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Icon name="whatsapp" className="h-5 w-5 shrink-0 text-gold-400" />
                 <span>
                   WhatsApp ile yazın
@@ -87,14 +84,20 @@ export default function Footer() {
       </div>
       <div className="border-t border-navy-800">
         <div className="mx-auto flex max-w-site flex-col gap-3 px-5 py-6 text-xs text-navy-400 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} {site.name}. Tüm hakları saklıdır.</p>
+          <p>
+            © {new Date().getFullYear()} {site.name}. Tüm hakları saklıdır.
+          </p>
           <p className="max-w-2xl">
             Bu internet sitesi, Türkiye Barolar Birliği Meslek Kuralları ve Reklam Yasağı Yönetmeliği çerçevesinde
             yalnızca bilgilendirme amacıyla hazırlanmıştır. İçerikler hukuki mütalaa niteliği taşımaz.
           </p>
           <p className="flex gap-4">
-            <Link href="/kvkk" className="hover:text-gold-300">KVKK Aydınlatma Metni</Link>
-            <Link href="/yasal-uyari" className="hover:text-gold-300">Yasal Uyarı</Link>
+            <Link href="/kvkk" className="hover:text-gold-300">
+              KVKK Aydınlatma Metni
+            </Link>
+            <Link href="/yasal-uyari" className="hover:text-gold-300">
+              Yasal Uyarı
+            </Link>
           </p>
         </div>
       </div>

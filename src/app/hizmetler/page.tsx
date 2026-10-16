@@ -8,7 +8,7 @@ import { services } from "@/data/services";
 export const metadata: Metadata = {
   title: "Çalışma Alanları",
   description:
-    "Acar Görgün Hukuk Bürosu'nun Çeşme / İzmir'de hizmet verdiği hukuk alanları: aile, iş, ceza, gayrimenkul ve kira, miras, icra, ticaret ve trafik kazası tazminatı.",
+    "Acar Görgün Hukuk Bürosu'nun Çeşme / İzmir'de hizmet verdiği hukuk alanları: aile, iş, ceza, gayrimenkul ve kira, miras, icra, ticaret, trafik kazası ve sigorta hukuku.",
   alternates: { canonical: "/hizmetler" },
 };
 
