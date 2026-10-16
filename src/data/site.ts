@@ -62,8 +62,9 @@ export const site = {
   },
   /** Google Haritalar paylaşım bağlantısı (yol tarifi düğmesi) */
   mapsUrl: "https://share.google/C77fp4VP0iMPOoXiv",
-  /** Harita gömme sorgusu */
-  mapQuery: "Sakarya Mahallesi 3101 Sokak No:2, 35930 Çeşme, İzmir",
+  /** Google Haritalar işletme kaydının gömme (embed) adresi */
+  mapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d200328.37139922296!2d26.014369586718747!3d38.3228017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bb7b7c9806cafd%3A0x4634b3958a677434!2zQWNhciBHw7ZyZ8O8biBIdWt1ayBCw7xyb3N1!5e0!3m2!1str!2str!4v1792161544256!5m2!1str!2str",
   hours: "Pazartesi - Cuma 09:00 - 18:00",
   bar: "İzmir Barosu",
 };

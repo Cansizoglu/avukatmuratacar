@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const mapQuery = encodeURIComponent(site.mapQuery);
   return (
     <>
       <PageHero
@@ -98,11 +97,12 @@ export default function ContactPage() {
       </section>
       <section className="mx-auto max-w-site px-5 pb-20">
         <iframe
-          title="Büro konumu"
-          src={`https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`}
+          title="Acar Görgün Hukuk Bürosu konumu"
+          src={site.mapEmbedUrl}
           className="h-[420px] w-full rounded-sm border border-navy-100"
+          allowFullScreen
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          referrerPolicy="strict-origin-when-cross-origin"
         />
       </section>
     </>
