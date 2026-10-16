@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { unsplash } from "@/data/site";
+import { unsplash, unsplashSrcSet } from "@/data/site";
 
 type Crumb = { href?: string; label: string };
 
@@ -17,7 +17,7 @@ export default function PageHero({
   return (
     <section className="relative isolate overflow-hidden bg-navy-950">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={unsplash(image, 1920, 700)} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30" />
+      <img src={unsplash(image, 1080, 400)} srcSet={unsplashSrcSet(image, 700 / 1920)} sizes="100vw" fetchPriority="high" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-900/50" />
       <div className="mx-auto max-w-site px-5 py-16 md:py-24">
         <nav aria-label="Sayfa yolu" className="text-sm text-navy-300">

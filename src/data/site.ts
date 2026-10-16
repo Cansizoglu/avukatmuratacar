@@ -76,6 +76,10 @@ export const whatsappLink = (text?: string, number: string = site.whatsapp) =>
 export const unsplash = (id: string, w = 1600, h?: number) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ""}&q=75`;
 
+/** Ekran genişliğine göre küçük/büyük Unsplash görseli seçilmesi için srcSet (mobilde hız) */
+export const unsplashSrcSet = (id: string, ratio: number) =>
+  [480, 768, 1080, 1440, 1920].map((w) => `${unsplash(id, w, Math.round(w * ratio))} ${w}w`).join(", ");
+
 /** Büronun kendi görselleri (public/img) */
 export const office = {
   logo: "/img/logo.png",

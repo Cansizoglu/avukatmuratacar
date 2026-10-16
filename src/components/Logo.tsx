@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { office, site } from "@/data/site";
 
 export function LogoMark({ className = "h-11 w-11" }: { className?: string }) {
@@ -18,13 +19,19 @@ export default function Logo({ light = false }: { light?: boolean }) {
       aria-label={`${site.name} ana sayfa`}
     >
       {light ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={office.logoLight} alt={site.name} width={640} height={393} className="h-auto w-60" />
+        <Image src={office.logoLight} alt={site.name} width={640} height={393} sizes="240px" className="h-auto w-60" />
       ) : (
         // Logo, beyaz bir sekme içinde başlığın altından lacivert slider alanına taşar.
         <span className="absolute -top-3 left-0 right-0 z-10 rounded-b-xl border-b-2 border-gold-400 bg-white px-3 pb-3 pt-2 shadow-lg shadow-navy-950/20">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={office.logo} alt={site.name} width={600} height={280} className="h-auto w-full" />
+          <Image
+            src={office.logo}
+            alt={site.name}
+            width={600}
+            height={280}
+            priority
+            sizes="(min-width: 1024px) 230px, (min-width: 640px) 180px, 150px"
+            className="h-auto w-full"
+          />
         </span>
       )}
     </Link>

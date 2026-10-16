@@ -6,7 +6,7 @@ import PostCard from "@/components/PostCard";
 import CtaBand from "@/components/CtaBand";
 import LawyerCard from "@/components/LawyerCard";
 import Faq from "@/components/Faq";
-import { site, unsplash, images, office } from "@/data/site";
+import { site, unsplash, unsplashSrcSet, images, office } from "@/data/site";
 import { services } from "@/data/services";
 import { sortedPosts } from "@/data/blog";
 import { generalFaqs } from "@/data/faq";
@@ -44,7 +44,9 @@ export default function HomePage() {
       <section className="relative isolate overflow-hidden bg-navy-950">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={unsplash(images.heroLady, 1920, 1100)}
+          src={unsplash(images.heroLady, 1080, 620)}
+          srcSet={unsplashSrcSet(images.heroLady, 1100 / 1920)}
+          sizes="100vw"
           alt="Adalet heykeli"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center opacity-45"
           fetchPriority="high"
