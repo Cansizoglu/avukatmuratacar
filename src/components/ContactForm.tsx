@@ -1,11 +1,19 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { services } from "@/data/services";
 import { site, whatsappLink } from "@/data/site";
 
+// İçinde bu kelimeler geçen mesajlar FormSubmit tarafından spam sayılıp iletilmez
+const SPAM_WORDS =
+  "seo, backlink, casino, bahis, crypto, bitcoin, viagra, loan, marketing, promotion, website design, web design, google ranking, first page, traffic, guest post, http://, https://, www."
+
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  const openedAt = useRef(0);
+  useEffect(() => {
+    openedAt.current = Date.now();
+  }, []);
   const [lawyerSlug, setLawyerSlug] = useState(site.lawyers[0].slug);
   const [status, setStatus] = useState<"" | "sending" | "sent" | "activation" | "error" | "wa">("");
   const lawyer = site.lawyers.find((l) => l.slug === lawyerSlug) ?? site.lawyers[0];
@@ -26,6 +34,12 @@ export default function ContactForm() {
   // E-posta, ziyaretçinin mail programı gerekmeden FormSubmit üzerinden doğrudan avukatın adresine gönderilir.
   // Her adres ilk kullanımda FormSubmit'in gönderdiği onay e-postasıyla bir kez etkinleştirilmelidir.
   async function sendMail(f: FormData) {
+    // Spam koruması: görünmez alanı dolduran veya sayfa açılır açılmaz gönderen botlar sessizce yok sayılır
+    if (f.get("website") || Date.now() - openedAt.current < 3000) {
+      setStatus("sent");
+      formRef.current?.reset();
+      return;
+    }
     setStatus("sending");
     try {
       const res = await fetch(`https://formsubmit.co/ajax/${lawyer.email}`, {
@@ -34,6 +48,8 @@ export default function ContactForm() {
         body: JSON.stringify({
           _subject: `Web sitesi randevu talebi - ${f.get("topic")} - ${f.get("name")}`,
           _template: "table",
+          _captcha: "false",
+          _blacklist: SPAM_WORDS,
           Avukat: lawyer.name,
           "Ad Soyad": f.get("name"),
           Telefon: f.get("phone"),
@@ -79,6 +95,14 @@ export default function ContactForm() {
       }}
       className="space-y-5"
     >
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+      />
       <fieldset>
         <legend className="text-sm font-medium text-navy-800">Mesajınız hangi avukatımıza iletilsin?</legend>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
