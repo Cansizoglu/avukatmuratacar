@@ -4,6 +4,7 @@ import SectionTitle from "@/components/SectionTitle";
 import ServiceCard from "@/components/ServiceCard";
 import PostCard from "@/components/PostCard";
 import CtaBand from "@/components/CtaBand";
+import LawyerCard from "@/components/LawyerCard";
 import Faq from "@/components/Faq";
 import { site, unsplash, images, office } from "@/data/site";
 import { services } from "@/data/services";
@@ -140,8 +141,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* LAWYERS */}
       <section className="bg-white py-24">
+        <div className="mx-auto max-w-site px-5">
+          <SectionTitle
+            center
+            eyebrow="Avukatlarımız"
+            title="Ekibimizle tanışın"
+            text="Büromuzda dosyalarınızı bizzat takip eden avukatlarımız."
+          />
+          <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-2">
+            {site.lawyers.map((l) => (
+              <LawyerCard key={l.slug} l={l} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-24">
         <div className="mx-auto max-w-site px-5">
           <SectionTitle
             center

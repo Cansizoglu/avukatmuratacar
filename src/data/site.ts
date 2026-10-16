@@ -1,3 +1,14 @@
+export type Lawyer = {
+  name: string;
+  slug: string;
+  short: string;
+  photo: string;
+  facts: string[];
+  bio: string[];
+  phone?: string;
+  phoneHref?: string;
+};
+
 export const site = {
   name: "Acar Görgün Hukuk Bürosu",
   shortName: "Acar Görgün Hukuk",
@@ -5,9 +16,31 @@ export const site = {
   description:
     "Acar Görgün Hukuk Bürosu; Av. Murat Acar ve Av. Ecem Görgün ile Çeşme / İzmir'de aile, iş, ceza, gayrimenkul, miras, icra ve ticaret hukuku alanlarında danışmanlık ve dava takibi hizmeti vermektedir.",
   lawyers: [
-    { name: "Av. Murat Acar" },
-    { name: "Av. Ecem Görgün", phone: "0530 384 04 84", phoneHref: "tel:+905303840484" },
-  ] as { name: string; phone?: string; phoneHref?: string }[],
+    {
+      name: "Av. Murat Acar",
+      slug: "murat-acar",
+      short: "Dokuz Eylül Üniversitesi Hukuk Fakültesi mezunu; 2018'den bu yana serbest avukat.",
+      photo: "/img/murat-acar.jpg",
+      facts: ["1994, Çeşme", "Dokuz Eylül Üniversitesi Hukuk Fakültesi, 2017", "2018'den bu yana serbest avukat"],
+      bio: [
+        "1994 yılında Çeşme’de doğan Av. Murat Acar, 2017 yılında Dokuz Eylül Üniversitesi Hukuk Fakültesi’nden mezun olmuştur. 2018 yılından bu yana serbest avukat olarak mesleki faaliyetlerini sürdürmektedir.",
+        "Mesleki çalışmalarında müvekkillerinin hak ve menfaatlerinin korunmasını, hukuki uyuşmazlıkların etkin şekilde çözüme kavuşturulmasını ve hukuki süreçlerin titizlikle yürütülmesini esas almaktadır. Hukukun farklı alanlarında danışmanlık, dava takibi ve uyuşmazlıkların çözümüne yönelik hukuki hizmetler sunmaktadır.",
+      ],
+    },
+    {
+      name: "Av. Ecem Görgün",
+      slug: "ecem-gorgun",
+      short: "İstanbul Bilgi Üniversitesi Hukuk Fakültesi onur derecesi; 2022'den bu yana serbest avukat.",
+      photo: "/img/ecem-gorgun.jpg",
+      phone: "0530 384 04 84",
+      phoneHref: "tel:+905303840484",
+      facts: ["1998, İstanbul", "İstanbul Bilgi Üniversitesi Hukuk Fakültesi, 2021 (onur derecesi)", "2022'den bu yana serbest avukat"],
+      bio: [
+        "1998 yılında İstanbul’da doğan Av. Ecem Görgün, 2021 yılında İstanbul Bilgi Üniversitesi Hukuk Fakültesi’nden onur derecesiyle mezun olmuştur. 2022 yılından itibaren serbest avukat olarak mesleki faaliyetlerini sürdürmekte ve müvekkillerine çeşitli hukuki alanlarda danışmanlık ve avukatlık hizmetleri sunmaktadır.",
+        "Mesleki çalışmalarında, her hukuki uyuşmazlığın kendine özgü koşullarını dikkate alarak somut olaya uygun çözümler geliştirmeyi hedeflemektedir. Hukuki danışmanlık ve dava takibi süreçlerinde, müvekkillerinin hak ve menfaatlerinin korunmasına, uyuşmazlıkların yürürlükteki mevzuat çerçevesinde değerlendirilmesine ve hukuki süreçlerin etkin biçimde yürütülmesine önem vermektedir.",
+      ],
+    },
+  ] as Lawyer[],
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://avukatmuratacar.com").replace(/\/$/, ""),
   phone: "0545 310 34 09",
   phoneHref: "tel:+905453103409",
@@ -77,3 +110,5 @@ export const images = {
   izmirBay: "photo-1719688550640-e27dda479c57",
   officeMan: "photo-1605602517229-cdbfc3dfb70c",
 };
+
+export const getLawyer = (slug: string) => site.lawyers.find((l) => l.slug === slug);
