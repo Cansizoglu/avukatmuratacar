@@ -7,6 +7,7 @@ export type Lawyer = {
   bio: string[];
   phone?: string;
   phoneHref?: string;
+  whatsapp?: string;
 };
 
 export const site = {
@@ -34,6 +35,7 @@ export const site = {
       photo: "/img/ecem-gorgun.jpg",
       phone: "0530 384 04 84",
       phoneHref: "tel:+905303840484",
+      whatsapp: "905303840484",
       facts: ["1998, İstanbul", "İstanbul Bilgi Üniversitesi Hukuk Fakültesi, 2021 (onur derecesi)", "2022'den bu yana serbest avukat"],
       bio: [
         "1998 yılında İstanbul’da doğan Av. Ecem Görgün, 2021 yılında İstanbul Bilgi Üniversitesi Hukuk Fakültesi’nden onur derecesiyle mezun olmuştur. 2022 yılından itibaren serbest avukat olarak mesleki faaliyetlerini sürdürmekte ve müvekkillerine çeşitli hukuki alanlarda danışmanlık ve avukatlık hizmetleri sunmaktadır.",
@@ -60,8 +62,8 @@ export const site = {
   bar: "İzmir Barosu",
 };
 
-export const whatsappLink = (text?: string) =>
-  `https://wa.me/${site.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+export const whatsappLink = (text?: string, number: string = site.whatsapp) =>
+  `https://wa.me/${number}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 
 /** Unsplash görsel adresi. Unsplash CDN'i boyutlandırmayı kendisi yapar. */
 export const unsplash = (id: string, w = 1600, h?: number) =>

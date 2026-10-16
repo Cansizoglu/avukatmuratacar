@@ -27,7 +27,7 @@ export default function ContactPage() {
               <Icon name="phone" />
             </span>
             <span>
-              <span className="block text-sm text-navy-300">Telefon</span>
+              <span className="block text-sm text-navy-300">Av. Murat Acar</span>
               <span className="block font-serif text-2xl">{site.phone}</span>
             </span>
           </a>

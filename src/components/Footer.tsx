@@ -50,13 +50,32 @@ export default function Footer() {
             <li>
               <a href={site.phoneHref} className="flex gap-3 hover:text-gold-300">
                 <Icon name="phone" className="h-5 w-5 shrink-0 text-gold-400" />
-                {site.phone}
+                <span>
+                  {site.phone}
+                  <span className="block text-xs text-navy-400">Av. Murat Acar</span>
+                </span>
               </a>
             </li>
+            {site.lawyers
+              .filter((l) => l.phone)
+              .map((l) => (
+                <li key={l.slug}>
+                  <a href={l.phoneHref} className="flex gap-3 hover:text-gold-300">
+                    <Icon name="phone" className="h-5 w-5 shrink-0 text-gold-400" />
+                    <span>
+                      {l.phone}
+                      <span className="block text-xs text-navy-400">{l.name}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
             <li>
               <a href={whatsappLink()} className="flex gap-3 hover:text-gold-300" target="_blank" rel="noopener noreferrer">
                 <Icon name="whatsapp" className="h-5 w-5 shrink-0 text-gold-400" />
-                WhatsApp ile yazın
+                <span>
+                  WhatsApp ile yazın
+                  <span className="block text-xs text-navy-400">Av. Murat Acar</span>
+                </span>
               </a>
             </li>
             <li className="flex gap-3">
