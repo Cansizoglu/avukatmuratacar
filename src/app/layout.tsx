@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.description,
-    images: [{ url: office.entrance, width: 1448, height: 1086 }],
+    images: [{ url: office.lounge, width: 1400, height: 1050 }],
   },
   twitter: { card: "summary_large_image" },
   verification: { google: "v8aM8ImsnBXV7gVuNzxnpzBnA08lokWzdp-HIMenq9M" },
@@ -38,7 +38,7 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   telephone: "+90 545 310 34 09",
-  image: `${site.url}${office.entrance}`,
+  image: `${site.url}${office.lounge}`,
   description: site.description,
   address: {
     "@type": "PostalAddress",

@@ -99,8 +99,8 @@ export default function HomePage() {
         <div className="relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={office.reception}
-            alt="Acar Görgün Hukuk Bürosu resepsiyon alanı"
+            src={office.workroom}
+            alt="Acar Görgün Hukuk Bürosu çalışma odası"
             loading="lazy"
             className="aspect-[9/10] w-full rounded-sm bg-navy-100 object-cover"
           />
@@ -227,7 +227,7 @@ export default function HomePage() {
           <div className="lg:col-span-2">
             <div className="overflow-hidden rounded-sm bg-navy-950 text-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={office.entrance} alt="Acar Görgün Hukuk Bürosu giriş kapısı" loading="lazy" className="aspect-[16/10] w-full object-cover" />
+              <img src={office.lounge} alt="Acar Görgün Hukuk Bürosu görüşme alanı" loading="lazy" className="aspect-[16/10] w-full object-cover" />
               <div className="p-8">
                 <h3 className="font-serif text-2xl font-semibold">Çeşme Büromuz</h3>
                 <ul className="mt-5 space-y-4 text-navy-200">

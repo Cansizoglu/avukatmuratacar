@@ -57,14 +57,14 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={office.room}
+            src={office.workroom}
             alt="Avukat çalışma odası"
             className="aspect-[3/4] w-full rounded-sm bg-navy-100 object-cover"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={office.meeting}
-            alt="Toplantı odası"
+            src={office.desk}
+            alt="Avukat masası"
             className="mt-10 aspect-[3/4] w-full rounded-sm bg-navy-100 object-cover"
           />
         </div>
@@ -136,12 +136,11 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="mx-auto max-w-site px-5">
           <SectionTitle center eyebrow="Büromuz" title="Çeşme ofisimiz" />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-4 sm:grid-cols-3">
             {[
-              [office.door, "Büro girişi"],
-              [office.reception, "Resepsiyon"],
-              [office.room, "Çalışma odası"],
-              [office.meeting, "Toplantı odası"],
+              [office.lounge, "Görüşme alanı"],
+              [office.workroom, "Çalışma odası"],
+              [office.desk, "Avukat masası"],
             ].map(([src, alt]) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -149,7 +148,7 @@ export default function AboutPage() {
                 src={src}
                 alt={alt}
                 loading="lazy"
-                className="aspect-[4/3] w-full rounded-sm bg-navy-100 object-cover"
+                className="aspect-[4/5] w-full rounded-sm bg-navy-100 object-cover"
               />
             ))}
           </div>

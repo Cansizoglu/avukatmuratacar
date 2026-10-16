@@ -72,11 +72,9 @@ export const office = {
   logo: "/img/logo.png",
   logoLight: "/img/logo-light.png",
   mark: "/img/mark-180.png",
-  entrance: "/img/ofis-giris.jpg",
-  door: "/img/ofis-kapi.jpg",
-  reception: "/img/ofis-resepsiyon.jpg",
-  room: "/img/ofis-oda.jpg",
-  meeting: "/img/ofis-toplanti.jpg",
+  workroom: "/img/ofis-calisma.jpg",
+  lounge: "/img/ofis-gorusme.jpg",
+  desk: "/img/ofis-masa.jpg",
 };
 
 export const images = {
