@@ -84,6 +84,7 @@ export const office = {
   workroom: "/img/ofis-calisma.jpg",
   lounge: "/img/ofis-gorusme.jpg",
   desk: "/img/ofis-masa.jpg",
+  room: "/img/ofis-oda.jpg",
 };
 
 export const images = {

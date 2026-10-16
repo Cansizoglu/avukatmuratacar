@@ -98,7 +98,7 @@ export default function LawyerPage({ params }: { params: { slug: string } }) {
               {l.phone}
             </a>
             <a
-              href={whatsappLink(`Merhaba ${l.name}, randevu almak istiyorum.`, l.whatsapp)}
+              href={whatsappLink(undefined, l.whatsapp)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-sm border border-navy-200 px-6 py-3.5 font-semibold text-navy-900 transition hover:border-gold-400 hover:text-gold-700"

@@ -136,11 +136,12 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="mx-auto max-w-site px-5">
           <SectionTitle center eyebrow="Büromuz" title="Çeşme ofisimiz" />
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          <div className="mt-12 grid gap-4 grid-cols-2 lg:grid-cols-4">
             {[
               [office.lounge, "Görüşme alanı"],
               [office.workroom, "Çalışma odası"],
               [office.desk, "Avukat masası"],
+              [office.room, "Avukat odası"],
             ].map(([src, alt]) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img

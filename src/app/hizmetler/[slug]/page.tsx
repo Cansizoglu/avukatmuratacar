@@ -84,7 +84,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               </a>
             ))}
             <a
-              href={whatsappLink(`Merhaba, ${s.title} konusunda bilgi almak istiyorum.`)}
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 flex items-center justify-center gap-2 rounded-sm border border-white/30 px-5 py-3 font-semibold hover:border-gold-300 hover:text-gold-300"

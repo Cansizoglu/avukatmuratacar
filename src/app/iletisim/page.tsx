@@ -42,7 +42,7 @@ export default function ContactPage() {
             </div>
           ))}
           <a
-            href={whatsappLink("Merhaba, randevu almak istiyorum.")}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="flex gap-4 rounded-sm border border-navy-100 bg-white p-6 transition hover:border-gold-300"

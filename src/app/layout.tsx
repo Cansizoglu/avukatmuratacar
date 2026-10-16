@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingContact from "@/components/FloatingContact";
 import { site, office } from "@/data/site";
 import { services } from "@/data/services";
 
@@ -69,11 +70,12 @@ const jsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr" className={`${sans.variable} ${serif.variable}`}>
-      <body>
+      <body className="pb-[76px] sm:pb-0">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Header />
         <main>{children}</main>
         <Footer />
+        <FloatingContact />
       </body>
     </html>
   );
