@@ -70,7 +70,7 @@ const jsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr" className={`${sans.variable} ${serif.variable}`}>
-      <body className="pb-[76px] sm:pb-[72px]">
+      <body className="sm:pb-[72px]">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Header />
         <main>{children}</main>

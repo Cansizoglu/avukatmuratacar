@@ -17,7 +17,7 @@ export default function FloatingContact() {
   return (
     <nav
       aria-label="Hızlı iletişim"
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-navy-950/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur"
+      className="fixed inset-x-0 hidden sm:block bottom-0 z-40 border-t border-white/10 bg-navy-950/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur"
     >
       <div className="mx-auto grid max-w-site grid-cols-4 gap-2">
         {buttons.map((b) => (

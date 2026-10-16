@@ -7,7 +7,7 @@ import { site, whatsappLink } from "@/data/site";
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [lawyerSlug, setLawyerSlug] = useState(site.lawyers[0].slug);
-  const [sent, setSent] = useState<"" | "mail" | "wa">("");
+  const [status, setStatus] = useState<"" | "sending" | "sent" | "activation" | "error" | "wa">("");
   const lawyer = site.lawyers.find((l) => l.slug === lawyerSlug) ?? site.lawyers[0];
 
   function buildMessage(f: FormData) {
@@ -23,18 +23,48 @@ export default function ContactForm() {
     ].join("\n");
   }
 
+  // E-posta, ziyaretçinin mail programı gerekmeden FormSubmit üzerinden doğrudan avukatın adresine gönderilir.
+  // Her adres ilk kullanımda FormSubmit'in gönderdiği onay e-postasıyla bir kez etkinleştirilmelidir.
+  async function sendMail(f: FormData) {
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${lawyer.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Web sitesi randevu talebi - ${f.get("topic")} - ${f.get("name")}`,
+          _template: "table",
+          Avukat: lawyer.name,
+          "Ad Soyad": f.get("name"),
+          Telefon: f.get("phone"),
+          Konu: f.get("topic"),
+          Mesaj: f.get("message"),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && String(data.success) === "true") {
+        setStatus("sent");
+        formRef.current?.reset();
+      } else if (/activat/i.test(String(data.message ?? ""))) {
+        setStatus("activation");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
   function send(channel: "mail" | "wa") {
     const form = formRef.current;
     if (!form || !form.reportValidity()) return;
     const f = new FormData(form);
-    const text = buildMessage(f);
     if (channel === "mail") {
-      const subject = `Randevu talebi - ${f.get("topic")} - ${f.get("name")}`;
-      window.location.href = `mailto:${lawyer.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      void sendMail(f);
     } else {
-      window.open(whatsappLink(text, lawyer.whatsapp), "_blank", "noopener,noreferrer");
+      window.open(whatsappLink(buildMessage(f), lawyer.whatsapp), "_blank", "noopener,noreferrer");
+      setStatus("wa");
     }
-    setSent(channel);
   }
 
   const field =
@@ -115,9 +145,10 @@ export default function ContactForm() {
       <div className="flex flex-col gap-3 sm:flex-row">
         <button
           type="submit"
-          className="rounded-sm bg-navy-900 px-6 py-3.5 font-semibold text-white transition hover:bg-navy-800"
+          disabled={status === "sending"}
+          className="rounded-sm bg-navy-900 px-6 py-3.5 font-semibold text-white transition hover:bg-navy-800 disabled:opacity-60"
         >
-          E-posta ile Gönder
+          {status === "sending" ? "Gönderiliyor..." : "E-posta ile Gönder"}
         </button>
         <button
           type="button"
@@ -127,11 +158,24 @@ export default function ContactForm() {
           WhatsApp ile Gönder
         </button>
       </div>
-      {sent && (
-        <p className="text-sm text-navy-700" role="status">
-          {sent === "mail"
-            ? `Mesajınız e-posta uygulamanızda ${lawyer.email} adresine hazırlandı. Gönder tuşuna bastığınızda ${lawyer.name}'a ulaşacaktır.`
-            : `Mesajınız WhatsApp'ta ${lawyer.name} için hazırlandı. Gönder tuşuna bastığınızda iletilecektir.`}
+      {status && status !== "sending" && (
+        <p
+          className={`rounded-sm p-3 text-sm ${status === "error" ? "bg-red-50 text-red-800" : "bg-gold-50 text-navy-800"}`}
+          role="status"
+        >
+          {status === "sent" && `Mesajınız ${lawyer.name}'a e-posta ile iletildi. En kısa sürede size dönüş yapılacaktır.`}
+          {status === "activation" &&
+            `E-posta gönderimi ilk kez kullanılıyor: ${lawyer.email} adresine bir onay e-postası gönderildi. Onaylandıktan sonra mesajlar doğrudan iletilecektir. Şimdilik WhatsApp ile gönderebilir veya arayabilirsiniz.`}
+          {status === "error" && (
+            <>
+              Mesaj şu anda gönderilemedi. Lütfen WhatsApp ile gönderin veya doğrudan{" "}
+              <a href={`mailto:${lawyer.email}`} className="font-semibold underline">
+                {lawyer.email}
+              </a>{" "}
+              adresine yazın.
+            </>
+          )}
+          {status === "wa" && `Mesajınız WhatsApp'ta ${lawyer.name} için hazırlandı. Gönder tuşuna bastığınızda iletilecektir.`}
         </p>
       )}
     </form>
